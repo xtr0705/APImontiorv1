@@ -7,20 +7,24 @@ const incidentSchema = new mongoose.Schema({
   },
   status:{
     type:String,
-    required:true
+    required:true,
+    default:"ONGOING",
+    enum:["ONGOING","RESOLVED"]
   },
-  Reason:{
+  reason:{
     type:String,
   },
   startedAt:{
-    type:String,
+    type:Date,
     required:true
   },
   resolvedAt:{
-    type:String
+    type:Date
   }
 },{
   timestamps:true
 })
 
 const Incident = mongoose.model('Incident',incidentSchema);
+
+export default Incident;
